@@ -1,0 +1,37 @@
+service SquireService {
+  // UNPROTECTED.
+  rpc RegisterUser (RegisterUserRequest)
+      returns (RegisterUserResponse);
+
+  // UNPROTECTED.
+  rpc Authenticate (AuthenticateRequest)
+      returns (AuthenticateResponse);
+
+  // AUTH_PROTECTED.
+  rpc RegisterDevice (RegisterDeviceRequest)
+      returns (RegisterDeviceResponse);
+
+  // AUTH_DEV_PROTECTED.
+  rpc UpdateDeviceState (UpdateDeviceStateRequest)
+      returns (UpdateDeviceStateResponse);
+
+  // AUTH_PROTECTED.
+  rpc GetAllDevices (Empty)
+      returns (GetAllDevicesResponse);
+
+  // AUTH_PROTECTED.
+  rpc AddActivityDefinition (AddActivityDefinitionRequest)
+      returns (AddActivityDefinitionResponse);
+
+  // AUTH_DEV_PROTECTED.
+  rpc GetAllSupportedActivities(Empty)
+      returns (GetAllSupportedActivitiesResponse);
+}
+// Unprotected RPCs.
+message RegisterUserRequest {
+  // All values self-explanatory.
+  string username = 1;
+  string password = 2;
+  string full_name = 3;
+  string email = 4;
+}
