@@ -1,0 +1,25 @@
+// Proto definitions for serializing a Status object.
+// file: status.proto
+// author: Nikolay Valev
+// date: 04/18/2022
+
+syntax = "proto3";
+
+package squire.proto.utils;
+
+// A proto representation of a Status message.
+message Status {
+  enum StatusCode {
+    OK = 0;
+    GENERIC_ERROR = 1;
+    DB_ERROR = 2;
+    VALIDATION_FAILED = 3;
+    INVALID_ARGUMENT = 4;
+    NOT_EXIST = 5;
+    AUTH_ERROR = 6;
+    UNIMPLEMENTED = 7;
+  }
+
+  StatusCode code = 1;
+  string message = 2;
+}

@@ -1,0 +1,35 @@
+// Proto definitions for UniP device management.
+// file: devices.proto
+// author: Nikolay Valev
+// date: 04/22/2022
+
+syntax = "proto3";
+
+import "proto/helperstructs.proto";
+
+package devices.proto;
+
+// Represents the hardware and software capabilities of a Device.
+message DeviceCapabilities {}
+
+// Represents the hardware and software requirements from a Device for an
+// Activity to run on it.
+message DeviceRequirements {}
+
+message Device {
+  string textid = 1;
+  string human_friendly_name = 2;
+  NetworkConfig network_config = 3;
+  DeviceCapabilities device_capabilities = 4;
+}
+
+// Format for storing a textual reference to a device.
+message DeviceListing {
+  string textid = 1;
+  string human_friendly_name = 2;
+}
+
+// Format for storing the device ids on a client.
+message DeviceIDs {
+  map <string, string> ids = 1;
+}

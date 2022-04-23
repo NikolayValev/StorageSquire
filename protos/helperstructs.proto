@@ -1,0 +1,20 @@
+// Proto definitions for shared helper structures.
+// file: status.proto
+// author: Nikolay Valev
+// date: 04/18/2022
+
+syntax = "proto3";
+
+package squire.proto;
+
+// Defines a generic empty message.
+message Empty {}
+
+// Represents the Network Configuration of a Device.
+message NetworkConfig {
+  string ip = 1;
+  string gateway = 2;
+}
+// Represents the all of the Users back end stored settings.
+message UserSettings {}
+// TODO(nvalev) Add a structure to represent the name of the Drives and thier location
