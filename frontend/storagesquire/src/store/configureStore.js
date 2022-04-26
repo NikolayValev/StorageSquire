@@ -1,6 +1,6 @@
-import {createStore, combineReducers, applyMiddleware} from "redux"
+import { createStore, combineReducers, applyMiddleware } from "redux"
 import thunk from "redux-thunk";
-/*
+
 import authReducer from "../reducers/auth";
 import mainReducer from "../reducers/main";
 import fileReducer from "../reducers/files"
@@ -20,16 +20,13 @@ import moverReducer from "../reducers/mover";
 import folderTreeReducer from "../reducers/folderTree"
 import uploadStorageSwitcherReducer from "../reducers/uploadStorageSwitcher";
 import mobileContextMenuReducer from "../reducers/mobileContextMenu";
-*/
-//const composeEnchancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
 
     const store = createStore(
         combineReducers({
-            /*
             auth: authReducer,
-            main:mainReducer,
+            main: mainReducer,
             files: fileReducer,
             folders: folderReducer,
             filter: filterReducer,
@@ -47,11 +44,10 @@ export default () => {
             folderTree: folderTreeReducer,
             storageSwitcher: uploadStorageSwitcherReducer,
             mobileContextMenu: mobileContextMenuReducer,
-            */
+
         }),
 
         applyMiddleware(thunk)
-        //composeEnchancers(applyMiddleware(thunk))
     )
 
     return store;

@@ -5,7 +5,7 @@
 
 syntax = "proto3";
 
-package squire.proto.utils;
+package squire.proto;
 
 // A proto representation of a Status message.
 message Status {

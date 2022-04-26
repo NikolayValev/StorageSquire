@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Routes/*Switch*/ } from "react-router-dom";
 import LoginPage from "../components/LoginPage"
 import { createBrowserHistory } from "history"
 import HomePage from "../components/Homepage"
@@ -41,10 +41,10 @@ const AppRouter = () => (
 const AppRouter = () => (
 
   <Router history={history} >
-    <Switch>
-      <Route path="/" exact={true} component={LoginPage} />
-      <Route key={1} path="/home" component={HomePage} />
-    </Switch>
+    <Routes>
+      <Route path="/" exact={true} element={<LoginPage/>} />
+      <Route key={1} path="/home" element={<HomePage/>} />
+    </Routes>
 
   </Router>
 )

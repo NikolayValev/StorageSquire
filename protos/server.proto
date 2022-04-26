@@ -4,12 +4,12 @@
 // date: 04/18/2022
 
 syntax = "proto3";
+// correct!
+import "protos/helperstructs.proto";
+//
+import "protos/devices.proto";
 
-import "proto/helperstructs.proto";
-import "proto/status.proto";
-import "/devices.proto";
-
-package squire.proto.server;
+package squire.proto;
 
 service SquireService {
   // UNPROTECTED.
@@ -22,9 +22,9 @@ service SquireService {
   rpc RegisterDevice(RegisterDeviceRequest) returns (RegisterDeviceResponse);
 
   // AUTH_DEV_PROTECTED.
-  rpc UpdateDeviceState(UpdateDeviceStateRequest)
+  /*rpc UpdateDeviceState(UpdateDeviceStateRequest)
       returns (UpdateDeviceStateResponse);
-
+  */
   // AUTH_PROTECTED.
   rpc GetAllDevices(Empty) returns (GetAllDevicesResponse);
 }
@@ -62,4 +62,13 @@ message RegisterDeviceRequest {
   NetworkConfig network_config = 2;
   // The hardware and software capabilities of the device.
   DeviceCapabilities device_capabilities = 3;
+}
+message RegisterDeviceResponse {
+  // The newly-assigned global unique identifier of the client device in the
+  // system.
+  string device_textid = 2;
+}
+message GetAllDevicesResponse {
+  // A list of the client's devices.
+  repeated Device devices = 1;
 }

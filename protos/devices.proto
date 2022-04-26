@@ -5,9 +5,10 @@
 
 syntax = "proto3";
 
-import "proto/helperstructs.proto";
+import public "protos/helperstructs.proto";
+// import public "./helperstructs.proto";
 
-package devices.proto;
+package squire.proto;
 
 // Represents the hardware and software capabilities of a Device.
 message DeviceCapabilities {}
@@ -30,6 +31,4 @@ message DeviceListing {
 }
 
 // Format for storing the device ids on a client.
-message DeviceIDs {
-  map <string, string> ids = 1;
-}
+message DeviceIDs { map<string, string> ids = 1; }
