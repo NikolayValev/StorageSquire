@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 let browserIDCheck = localStorage.getItem("browser-id");
 
@@ -33,7 +33,7 @@ axiosRetry.interceptors.request.use((config) => {
 })
 
 axiosRetry.interceptors.response.use((response) => {
-  //console.log("axios interceptor successful")
+  console.log("axios interceptor successful")
   return response;
 }, (error) => {
 
@@ -44,18 +44,18 @@ axiosRetry.interceptors.response.use((response) => {
     let originalRequest = error.config;
 
     if (error.response.status !== 401) {
-        //console.log("error does not equal 401");
-        return reject(error);
+      console.log("error does not equal 401");
+      return reject(error);
     }
 
     if (originalRequest.ran === true) {
-      //console.log("original request ran", error.config.url);
+      console.log("original request ran", error.config.url);
       return reject(error);
     }
 
     if (error.config.url === "/user-service/get-token") {
-          //console.log("error url equal to refresh token route")
-          return reject();
+      console.log("error url equal to refresh token route")
+      return reject();
     }
 
     if (!browserIDCheck) {
@@ -63,9 +63,11 @@ axiosRetry.interceptors.response.use((response) => {
       localStorage.setItem("browser-id", browserIDCheck);
     };
 
-    axiosNoRetry.post("/user-service/get-token", {}, {headers: {
-      "uuid" : browserIDCheck
-    }}).then((cookieResponse) => {
+    axiosNoRetry.post("/user-service/get-token", {}, {
+      headers: {
+        "uuid": browserIDCheck
+      }
+    }).then((cookieResponse) => {
 
       // We need to sleep before requesting again, if not I believe
       // The old request will still be open and it will not make a

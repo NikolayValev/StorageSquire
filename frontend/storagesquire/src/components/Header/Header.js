@@ -15,11 +15,12 @@ const Header = (props) => (
                                 <a href="#">
                                     <img src="/assets/searchicon.svg" alt="search"/>
                                 </a>
-                                <input type="text" 
-                                    placeholder="Search your files"
-                                    onChange={props.searchOnChange} 
+                                <input type="text"
+                                    //placeholder="Search your files"
+                                    onChange={props.searchOnChange}
                                     value={props.search}
-                                    placeholder="Search" type="text"
+                                    placeholder="Search"
+                                    //type="text"
                                     onFocus={props.showSuggested}
                                     onBlur={props.hideSuggested}/>
                                 <div class="search__files--dropdown" style={(props.state.focused && props.searchValue.length !== 0)? {display:"block"} : {display:"none"}}>
@@ -38,7 +39,7 @@ const Header = (props) => (
                                 </div>
                                 <div class="profile__wrapper">
                                     <div class="profile__button">
-                                        <a style={{backgroundColor:"#3c85ee"}}> 
+                                        <a style={{backgroundColor:"#3c85ee"}}>
                                             <span style={{color:"#fff"}}>{props.getProfilePic()}</span>
                                         </a>
                                     </div>

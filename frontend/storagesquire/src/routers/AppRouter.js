@@ -1,8 +1,9 @@
 import React from "react";
-import { Router, Route, Routes/*Switch*/ } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes/*Switch*/ } from "react-router-dom";
 import LoginPage from "../components/LoginPage"
 import { createBrowserHistory } from "history"
 import HomePage from "../components/Homepage"
+import SettingsPage from "../components/SettingsPage";
 /*
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -12,7 +13,6 @@ import uuid from "uuid"
 import ResetPasswordPage from "../components/ResetPasswordPage";
 import GoogleAccountPage from "../components/GoogleAccountPage";
 import AddStoragePage from "../components/AddStoragePage";
-import SettingsPage from "../components/SettingsPage";
 */
 export const history = createBrowserHistory()
 /*
@@ -42,8 +42,9 @@ const AppRouter = () => (
 
   <Router history={history} >
     <Routes>
-      <Route path="/" exact={true} element={<LoginPage/>} />
-      <Route key={1} path="/home" element={<HomePage/>} />
+      <Route path="/" exact={true} element={<LoginPage />} />
+      <Route key={1} path="/home" element={<HomePage />} />
+      <Route path="/settings" element={SettingsPage} />
     </Routes>
 
   </Router>

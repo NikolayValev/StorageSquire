@@ -21,19 +21,6 @@ const FolderTreeStorage = (props) => (
                     </div>
                 </div>
     </div>
-                        //return
-
-    // <div class="elem__structure root__element">
-    //     <div class={props.state.open ? "parent__structure active__parent" : "parent__structure"}>
-    //         <span onClick={props.arrowClick}><img src="/assets/arrowstructure.svg" alt="arrowstructure"/></span>
-    //         <div class="info__name">
-    //             <p>{props.type === "drive" ? "Google Drive" : props.type === "mongo" ? "myDrive" : "Amazon S3"}</p>
-    //         </div>
-    //     </div>
-    //     {(props.state.open && props.state.folders.length !== 0)  ? props.state.folders.map((folder) => {
-    //         return <FolderTreeStorageSub key={folder._id} folder={folder} type={props.type}/>
-    //     }) : undefined}
-    // </div>
-) 
+)
 
 export default FolderTreeStorage;

@@ -40,7 +40,7 @@ axiosRetry.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 axiosRetry.interceptors.response.use(function (response) {
-  //console.log("axios interceptor successful")
+  console.log("axios interceptor successful");
   return response;
 }, function (error) {
   return new Promise(function (resolve, reject) {
@@ -48,17 +48,17 @@ axiosRetry.interceptors.response.use(function (response) {
     var originalRequest = error.config;
 
     if (error.response.status !== 401) {
-      //console.log("error does not equal 401");
+      console.log("error does not equal 401");
       return reject(error);
     }
 
     if (originalRequest.ran === true) {
-      //console.log("original request ran", error.config.url);
+      console.log("original request ran", error.config.url);
       return reject(error);
     }
 
     if (error.config.url === "/user-service/get-token") {
-      //console.log("error url equal to refresh token route")
+      console.log("error url equal to refresh token route");
       return reject();
     }
 
