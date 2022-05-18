@@ -1,12 +1,10 @@
-// Proto definitions for shared helper structures.
-// file: status.proto
+// Proto definitions for the server.
+// file: server.proto
 // author: Nikolay Valev
 // date: 04/18/2022
 
 syntax = "proto3";
-// correct!
 import "protos/helperstructs.proto";
-//
 import "protos/devices.proto";
 
 package squire.proto;
@@ -21,16 +19,11 @@ service SquireService {
   // AUTH_PROTECTED.
   rpc RegisterDevice(RegisterDeviceRequest) returns (RegisterDeviceResponse);
 
-  // AUTH_DEV_PROTECTED.
-  /*rpc UpdateDeviceState(UpdateDeviceStateRequest)
-      returns (UpdateDeviceStateResponse);
-  */
   // AUTH_PROTECTED.
   rpc GetAllDevices(Empty) returns (GetAllDevicesResponse);
 }
 // Unprotected RPCs.
 message RegisterUserRequest {
-  // All values self-explanatory.
   string username = 1;
   string password = 2;
   string full_name = 3;
@@ -39,19 +32,17 @@ message RegisterUserRequest {
 message RegisterUserResponse {
   // The authentication token to use when making protected calls.
   string authtoken = 2;
-  // The lifetime in seconds of the authentication token.
+  // The lifetime in seconds of the token.
   int64 lifetime = 3;
-  // TODO(simeondorelov): Pass back a client certificate?
 }
 message AuthenticateRequest {
-  // All values self-explanatory.
   string username = 1;
   string password = 2;
 }
 message AuthenticateResponse {
   // The authentication token to use when making protected calls.
   string authtoken = 2;
-  // The lifetime in seconds of the authentication token.
+  // The lifetime in seconds of the  token.
   int64 lifetime = 3;
 }
 // Protected RPCs.
@@ -64,8 +55,6 @@ message RegisterDeviceRequest {
   DeviceCapabilities device_capabilities = 3;
 }
 message RegisterDeviceResponse {
-  // The newly-assigned global unique identifier of the client device in the
-  // system.
   string device_textid = 2;
 }
 message GetAllDevicesResponse {

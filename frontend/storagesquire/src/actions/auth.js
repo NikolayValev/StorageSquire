@@ -137,7 +137,7 @@ export const startLoginCheck = (currentRoute) => {
 
         }).catch((err) => {
 
-            console.log("login check error", err, err.response.data, err.data, err.response);
+            //console.log("login check error", err, err.response.data, err.data, err.response);
             // window.localStorage.removeItem("token")
             dispatch(setLoginFailed("Login Expired"))
             // history.push("/login")
